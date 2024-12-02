@@ -1,7 +1,5 @@
 use ordered_vec::OrdVec;
-use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
+use crate::common;
 
 pub fn calculate_distance(list1: &Vec<i32>, list2: &Vec<i32>) -> i32 {
     let mut sum: i32 = 0;
@@ -26,7 +24,7 @@ pub fn calculate_similarity(list1: &Vec<i32>, list2: &Vec<i32>) -> i32 {
 pub fn read_lists() -> (Vec<i32>, Vec<i32>) {
     let mut list1: Vec<i32> = Vec::new();
     let mut list2: Vec<i32> = Vec::new();
-    if let Ok(lines) = read_lines("./input.txt") {
+    if let Ok(lines) = common::read_lines("./input.txt") {
         for line in lines.flatten() {
             let values: Vec<&str> = line.split("   ").collect();
             let val1 = values[0].parse::<i32>().unwrap();
@@ -36,12 +34,4 @@ pub fn read_lists() -> (Vec<i32>, Vec<i32>) {
         }
     }
     (list1, list2)
-}
-
-pub fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-where
-    P: AsRef<Path>,
-{
-    let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
 }
