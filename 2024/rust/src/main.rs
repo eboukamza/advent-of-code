@@ -2,6 +2,7 @@ mod day01;
 mod common;
 mod day02;
 mod day03;
+mod day04;
 
 fn main() {
     let (list1, list2) = day01::read_lists();
@@ -24,4 +25,11 @@ fn main() {
     println!("restricted ops");
     let result_restricted = day03::calculate_mul_restricted();
     println!("{}", result_restricted);
+
+    // day 04
+    let sum = day04::find_xmas_all();
+    println!("XMAS count: {}", sum);
+
+    let sum_x = day04::find_mas_x();
+    println!("X-MAS count: {}", sum_x)
 }
