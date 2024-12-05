@@ -1,5 +1,5 @@
-use std::fs;
 use regex::Regex;
+use std::fs;
 
 pub fn calculate_mul() -> i32 {
     let contents = fs::read_to_string("./input3.txt").unwrap();
@@ -26,7 +26,7 @@ fn parse_and_execute(code: &str) -> i32 {
 fn scan_for_mul(code: &str) -> Vec<(i32, i32)> {
     let mul_regex = Regex::new(r"mul\((\d+),(\d+)\)").unwrap();
     let mut ops: Vec<(i32, i32)> = vec![];
-    for (_, [op1, op2]) in mul_regex.captures_iter(code).map(|caps| caps.extract()){
+    for (_, [op1, op2]) in mul_regex.captures_iter(code).map(|caps| caps.extract()) {
         ops.push((op1.parse::<i32>().unwrap(), op2.parse::<i32>().unwrap()));
     }
 
@@ -34,5 +34,8 @@ fn scan_for_mul(code: &str) -> Vec<(i32, i32)> {
 }
 
 fn sum_mul_ops(ops: &Vec<(i32, i32)>) -> i32 {
-    ops.iter().map(|(op1, op2)| op1*op2).reduce(|sum, val| sum + val).unwrap()
+    ops.iter()
+        .map(|(op1, op2)| op1 * op2)
+        .reduce(|sum, val| sum + val)
+        .unwrap()
 }

@@ -1,5 +1,5 @@
-use ordered_vec::OrdVec;
 use crate::common;
+use ordered_vec::OrdVec;
 
 pub fn calculate_distance(list1: &Vec<i32>, list2: &Vec<i32>) -> i32 {
     let mut sum: i32 = 0;

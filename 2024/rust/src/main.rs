@@ -1,8 +1,9 @@
-mod day01;
 mod common;
+mod day01;
 mod day02;
 mod day03;
 mod day04;
+mod day05;
 
 fn main() {
     let (list1, list2) = day01::read_lists();
@@ -31,5 +32,15 @@ fn main() {
     println!("XMAS count: {}", sum);
 
     let sum_x = day04::find_mas_x();
-    println!("X-MAS count: {}", sum_x)
+    println!("X-MAS count: {}", sum_x);
+
+    // day 05
+    let sum_valid_orders = day05::sum_valid_orders();
+    println!("valid orders sum {}", sum_valid_orders);
+
+    let sum_invalid_orders_corrected = day05::sum_invalid_orders_corrected();
+    println!(
+        "invalid orders corrected sum {}",
+        sum_invalid_orders_corrected
+    );
 }
