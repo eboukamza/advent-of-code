@@ -1,7 +1,7 @@
-use std::fs;
+use crate::common;
 
 pub fn find_xmas_all() -> i32 {
-    let matrix = &read_matrix();
+    let matrix = &common::read_matrix("./input4.txt");
 
     let mut sum = 0;
     let word = "XMAS";
@@ -67,7 +67,7 @@ pub fn find_xmas_all() -> i32 {
 }
 
 pub fn find_mas_x() -> i32 {
-    let matrix = &read_matrix();
+    let matrix = &common::read_matrix("./input4.txt");
     let mut sum = 0;
 
     let matrix_len = matrix.len();
@@ -108,23 +108,6 @@ pub fn find_mas_x() -> i32 {
     }
 
     sum
-}
-
-fn read_matrix() -> Vec<Vec<String>> {
-    let contents = fs::read_to_string("./input4.txt").unwrap();
-
-    let mut matrix: Vec<Vec<String>> = Vec::new();
-
-    let lines: Vec<_> = contents.split("\n").collect();
-    for line in lines.iter() {
-        let letters: Vec<_> = line
-            .split("")
-            .filter(|x| !x.is_empty())
-            .map(|s| String::from(s))
-            .collect();
-        matrix.push(letters);
-    }
-    matrix
 }
 
 fn look_up(pos_x: usize, pos_y: usize, word_length: usize, matrix: &Vec<Vec<String>>) -> String {

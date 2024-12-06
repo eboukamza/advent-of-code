@@ -4,6 +4,7 @@ mod day02;
 mod day03;
 mod day04;
 mod day05;
+mod day06;
 
 fn main() {
     let (list1, list2) = day01::read_lists();
@@ -43,4 +44,11 @@ fn main() {
         "invalid orders corrected sum {}",
         sum_invalid_orders_corrected
     );
+
+    //day 6
+    let visited_positions = day06::get_positions_len();
+    println!("visited positions {}", visited_positions);
+
+    let num_of_obstacles = day06::get_num_of_obstacles();
+    println!("num_of_obstacles {}", num_of_obstacles)
 }
