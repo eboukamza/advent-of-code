@@ -6,6 +6,7 @@ mod day04;
 mod day05;
 mod day06;
 mod day07;
+mod day10;
 
 fn main() {
     // let (list1, list2) = day01::read_lists();
@@ -56,4 +57,8 @@ fn main() {
     //day 7
     println!("{}", day07::read_lists());
     println!("{}", day07::read_lists2());
+
+    // day 10
+    let (score, score2) = day10::find_tail_heads();
+    println!("score1 {}, score2 {}", score, score2);
 }
