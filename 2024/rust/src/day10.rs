@@ -1,12 +1,12 @@
-use std::collections::HashSet;
 use crate::common::read_matrix;
+use std::collections::HashSet;
 
 pub fn find_tail_heads() -> (usize, u32) {
     let matrix = &read_matrix("./input10.txt");
     let mut score = 0;
     let mut score2 = 0;
-    for (i, line) in matrix.iter().enumerate() {
-        for(j, cell) in matrix[i].iter().enumerate() {
+    for (i, _line) in matrix.iter().enumerate() {
+        for (j, cell) in matrix[i].iter().enumerate() {
             let value = cell.parse::<u32>().unwrap();
             if value == 0 {
                 let mut positions = HashSet::new();
@@ -18,11 +18,15 @@ pub fn find_tail_heads() -> (usize, u32) {
     (score, score2)
 }
 
-fn num_of_tail_heads(pos: (usize, usize), matrix: &Vec<Vec<String>>, positions: &mut HashSet<(usize, usize)>) -> u32 {
+fn num_of_tail_heads(
+    pos: (usize, usize),
+    matrix: &Vec<Vec<String>>,
+    positions: &mut HashSet<(usize, usize)>,
+) -> u32 {
     let (i, j) = pos;
     let value = matrix[i][j].parse::<u32>().unwrap();
     if value == 9 {
-        positions.insert((i,j));
+        positions.insert((i, j));
         return 1;
     }
     // for each direction look value and if is correct find a tail head
@@ -49,8 +53,8 @@ fn num_of_tail_heads(pos: (usize, usize), matrix: &Vec<Vec<String>>, positions: 
     let (new_j_left, out_bound_y) = j.overflowing_sub(1);
     if !out_bound_y {
         let down_value: u32 = matrix[i][new_j_left].parse::<u32>().unwrap();
-        if down_value == value +1 {
-            sum+= num_of_tail_heads((i, new_j_left), matrix, positions);
+        if down_value == value + 1 {
+            sum += num_of_tail_heads((i, new_j_left), matrix, positions);
         }
     }
 
@@ -58,7 +62,7 @@ fn num_of_tail_heads(pos: (usize, usize), matrix: &Vec<Vec<String>>, positions: 
     let new_j_right = j + 1;
     if new_j_right < matrix[i].len() {
         let right_value: u32 = matrix[i][new_j_right].parse::<u32>().unwrap();
-        if right_value == value +1 {
+        if right_value == value + 1 {
             sum += num_of_tail_heads((i, new_j_right), matrix, positions);
         }
     }
