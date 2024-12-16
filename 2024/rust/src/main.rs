@@ -7,6 +7,7 @@ mod day05;
 mod day06;
 mod day07;
 mod day10;
+mod day12;
 
 fn main() {
     if false {
@@ -58,9 +59,12 @@ fn main() {
         //day 7
         println!("{}", day07::read_lists());
         println!("{}", day07::read_lists2());
+
+        // day 10
+        let (score, score2) = day10::find_tail_heads();
+        println!("score1 {}, score2 {}", score, score2);
     }
 
-    // day 10
-    let (score, score2) = day10::find_tail_heads();
-    println!("score1 {}, score2 {}", score, score2);
+    //day 12
+    day12::read_map();
 }
