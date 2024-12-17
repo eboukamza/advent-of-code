@@ -6,6 +6,7 @@ mod day04;
 mod day05;
 mod day06;
 mod day07;
+mod day08;
 mod day10;
 mod day12;
 
@@ -63,8 +64,11 @@ fn main() {
         // day 10
         let (score, score2) = day10::find_tail_heads();
         println!("score1 {}, score2 {}", score, score2);
+
+        //day 12
+        day12::read_map();
     }
 
-    //day 12
-    day12::read_map();
+    day08::find_antinodes();
+    day08::find_antinodes_with_resonances()
 }
