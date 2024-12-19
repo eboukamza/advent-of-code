@@ -10,6 +10,7 @@ mod day08;
 mod day09;
 mod day10;
 mod day12;
+mod day19;
 
 fn main() {
     if false {
@@ -66,6 +67,10 @@ fn main() {
         day08::find_antinodes();
         day08::find_antinodes_with_resonances();
 
+        //day 9
+        day09::calculate_checksum();
+        day09::calculate_checksum2();
+
         // day 10
         let (score, score2) = day10::find_tail_heads();
         println!("score1 {}, score2 {}", score, score2);
@@ -74,6 +79,5 @@ fn main() {
         day12::read_map();
     }
 
-    day09::calculate_checksum();
-    day09::calculate_checksum2()
+    day19::count_towel_patterns();
 }
