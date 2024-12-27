@@ -9,6 +9,7 @@ mod day07;
 mod day08;
 mod day09;
 mod day10;
+mod day11;
 mod day12;
 mod day19;
 
@@ -77,7 +78,13 @@ fn main() {
 
         //day 12
         day12::read_map();
+
+        //day 19
+        day19::count_towel_patterns();
     }
 
-    day19::count_towel_patterns();
+    let stones25 = day11::blink_stones(25);
+    println!("stones part1 {}", stones25);
+    let stones75 = day11::blink_stones(75);
+    println!("stones {}", stones75);
 }
